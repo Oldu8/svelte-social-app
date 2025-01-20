@@ -24,6 +24,7 @@
 	}
 </script>
 
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
 	draggable={true}
 	on:dragstart={dragStart}
@@ -34,6 +35,7 @@
 			<div class="flex-it flex-row">
 				<div class="flex flex-1">{task.text}</div>
 				<div class="flex items-end hover:text-red-600">
+					<!-- svelte-ignore a11y_consider_explicit_label -->
 					<button
 						on:click|stopPropagation={() => {
 							taskListStore.removeTask(listIdx, taskIdx);

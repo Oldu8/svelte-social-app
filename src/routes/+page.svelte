@@ -7,7 +7,7 @@
 
 <div class="flex-it h-full p-10">
 	<div class="mb-6 text-2xl text-white">
-		{data.appName} - {data.content}
+		{data.title} - {data.content}
 	</div>
 	<button
 		on:click={taskListStore.addList}
