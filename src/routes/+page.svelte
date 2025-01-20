@@ -1,26 +1,25 @@
 <script>
-	let count = 0;
-	// eto useEffect v svelte
-	$: {
-		if (count > 9) {
-			console.log('обнуляй');
-			count = 0;
-		}
-		console.log(count);
-	}
+	import TaskList from '../components/task-manager/TaskList.svelte';
+	import { taskListStore } from '../stores/tasks';
 
-	$: doubled = count * 2;
+	export let data;
 </script>
 
-<div>
-	<h2 class="text-3xl font-bold text-white underline">All count:</h2>
+<div class="flex-it h-full p-10">
+	<div class="mb-6 text-2xl text-white">
+		{data.appName} - {data.content}
+	</div>
 	<button
-		on:click={() => count++}
-		class="rounded border-2 border-white p-2 text-3xl font-bold text-white underline"
-		>click: {count}</button
+		on:click={taskListStore.addList}
+		class="mb-3 flex cursor-pointer items-start text-xl font-bold text-white hover:underline"
 	>
-	<p class="text-3xl text-white">Double: {doubled}</p>
+		+ Add List
+	</button>
+	<div class="flex-it h-full flex-1">
+		<div class="flex-it h-full flex-row rounded-xl">
+			{#each $taskListStore as list, listIdx (list.id)}
+				<TaskList {list} {listIdx} />
+			{/each}
+		</div>
+	</div>
 </div>
-
-<style>
-</style>

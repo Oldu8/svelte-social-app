@@ -8,6 +8,7 @@
 
 {#if isEditing}
 	<div class="flex-it">
+		<!-- svelte-ignore element_invalid_self_closing_tag -->
 		<textarea bind:value />
 		<button
 			on:click={() => {
